@@ -37,16 +37,21 @@ let KeyCodes = {
     32:" "
 };
 
+
+let commandStack = [];
+let commandIndex = -1;
+
 let Info = {
     "about.txt":`I am Dhrubesh, a CS student from India. I love web development and acoustic music.`,
     "education.txt":"B-tech Computer Science , SRM univ Chennai India",
     "experience.txt":"blank", //update this later
-    "languages.txt":"JavaScript" //update this later
+    "languages.txt":"JavaScript", //update this later
+    "contact.txt":"Email: dhrubesh97@gmail.com"
 }
 
 let commands = {
     "ls":(x)=>{
-        displayOutput("about.txt education.txt  experience.txt languages.txt");
+        displayOutput("about.txt education.txt  experience.txt languages.txt contact.txt");
     },
     "clear":(x)=>{
         let terminal = document.getElementById("terminal");
@@ -58,6 +63,10 @@ let commands = {
     "cat":(x)=>{
         let info = x.replace("cat ","");
         displayOutput(Info[info]);
+    },
+    "echo":(x)=>{
+        let data = x.replace("echo ","");
+        displayOutput(data);
     }
     
 }
@@ -87,12 +96,33 @@ document.addEventListener('keydown', function(event) {
      let x = document.getElementById("input");
      key = event.keyCode;
      if(key == 13){
+        //  debugger;
          if (commands[x.innerHTML.split(" ")[0]]!=undefined){
              commands[x.innerHTML.split(" ")[0]](x.innerHTML);
-         }else{
+             commandStack.push(x.innerHTML);
+             commandIndex +=1;
+             console.log(commandStack);
+             console.log(commandIndex);
+         }else if(x.innerHTML.split(" ")[0]==""){
+             displayOutput("");
+         }
+         else{
              errorMessage(x);
          }
          
+     }
+     
+     if(key == 38){
+         x.innerHTML = commandStack[commandIndex];
+         if(commandIndex-1>0){
+             commandIndex -=1;
+         }
+     }
+     if(key == 40){
+         x.innerHTML = commandStack[commandIndex];
+         if(commandIndex+1<commandIndex.length){
+             commandIndex +=1;
+         }
      }
      if(key == 8){
          x.innerHTML = x.innerHTML.slice(0,x.innerHTML.length-1);
