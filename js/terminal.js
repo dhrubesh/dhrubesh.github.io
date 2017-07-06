@@ -47,15 +47,15 @@ let files = ["about.txt" ,"education.txt"  ,"experience.txt", "languages.txt","c
 let Info = {
     "about.txt":`I am Dhrubesh, a CS student from India. I love web development and acoustic music.`,
     "education.txt":"B-tech Computer Science , SRM univ Chennai India",
-    "experience.txt":"blank", //update this later
-    "languages.txt":"JavaScript", //update this later
+    "experience.txt":"UI Developer : Pickyourtrail:- May 2017 - Present and Front-End Developer : Try Cinema:- Sept 2016 - Feb 2017", //update this later
+    "languages.txt":"JavaScript , AngularJS and ReactJS", //update this later
     "contact.txt":"Email: dhrubesh97@gmail.com"
 }
 
 let commands = {
     "ls":(x)=>{
         if(x.replace(" ","")=="ls"){
-            displayOutput(`about.txt education.txt  experience.txt languages.txt contact.txt`);
+            displayOutput(`about.txt education.txt experience.txt languages.txt contact.txt`);
         }else{
             errorMessage(x);
         }
