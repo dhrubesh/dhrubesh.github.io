@@ -39,7 +39,7 @@ let KeyCodes = {
 
 
 let commandStack = [];
-let commandIndex = -1;
+let commandIndex = 0;
 
 let Info = {
     "about.txt":`I am Dhrubesh, a CS student from India. I love web development and acoustic music.`,
@@ -51,7 +51,13 @@ let Info = {
 
 let commands = {
     "ls":(x)=>{
-        displayOutput("about.txt education.txt  experience.txt languages.txt contact.txt");
+        if(x.replace(" ","")=="ls"){
+            displayOutput(`about.txt education.txt  experience.txt languages.txt frameworks.txt
+        vcs.txt aws.txt contact.txt`);
+        }else{
+            errorMessage(x);
+        }
+        
     },
     "clear":(x)=>{
         let terminal = document.getElementById("terminal");
@@ -67,6 +73,14 @@ let commands = {
     "echo":(x)=>{
         let data = x.replace("echo ","");
         displayOutput(data);
+    },
+    "help":(x)=>{
+        let commandList = Object.keys(commands);
+        let data = "Try these commands to find out more about me: ";
+        for(let i=0;i<commandList.length;i++){
+            data += commandList[i] + ", "
+        }
+        displayOutput(data.slice(0,data.length-2));
     }
     
 }
@@ -96,13 +110,14 @@ document.addEventListener('keydown', function(event) {
      let x = document.getElementById("input");
      key = event.keyCode;
      if(key == 13){
-        //  debugger;
          if (commands[x.innerHTML.split(" ")[0]]!=undefined){
              commands[x.innerHTML.split(" ")[0]](x.innerHTML);
-             commandStack.push(x.innerHTML);
-             commandIndex +=1;
-             console.log(commandStack);
-             console.log(commandIndex);
+             if(x.innerHTML!=""){
+                 commandStack.push(x.innerHTML);
+             }else{
+                 commandStack.push("clear");
+             }
+             commandIndex = commandStack.length;
          }else if(x.innerHTML.split(" ")[0]==""){
              displayOutput("");
          }
@@ -113,15 +128,15 @@ document.addEventListener('keydown', function(event) {
      }
      
      if(key == 38){
-         x.innerHTML = commandStack[commandIndex];
-         if(commandIndex-1>0){
+         if(commandIndex-1>=0){
              commandIndex -=1;
+             x.innerHTML = commandStack[commandIndex];
          }
      }
      if(key == 40){
-         x.innerHTML = commandStack[commandIndex];
-         if(commandIndex+1<commandIndex.length){
+         if(commandIndex+1<commandStack.length){
              commandIndex +=1;
+             x.innerHTML = commandStack[commandIndex];
          }
      }
      if(key == 8){
