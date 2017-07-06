@@ -1,0 +1,30 @@
+h1{
+    font-family: 'Rubik Mono One', sans-serif;
+}
+
+p{
+    font-family: 'Press Start 2P', cursive;
+}
+
+#blinker{
+    font-family: 'Press Start 2P', cursive;
+    animation-name: blinker;
+    animation-duration: 0.6s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+}
+
+@keyframes blinker{
+    from {opacity: 0;}
+    to {opacity: 0.9;}
+}
+
+#name{
+    background-color: #f4df42;
+    color: #333;
+}
+
+body{
+    color: #fff;
+    background-color:#333
+}

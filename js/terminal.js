@@ -41,6 +41,9 @@ let KeyCodes = {
 let commandStack = [];
 let commandIndex = 0;
 
+//files
+let files = ["about.txt" ,"education.txt"  ,"experience.txt", "languages.txt","contact.txt"];
+        
 let Info = {
     "about.txt":`I am Dhrubesh, a CS student from India. I love web development and acoustic music.`,
     "education.txt":"B-tech Computer Science , SRM univ Chennai India",
@@ -52,8 +55,7 @@ let Info = {
 let commands = {
     "ls":(x)=>{
         if(x.replace(" ","")=="ls"){
-            displayOutput(`about.txt education.txt  experience.txt languages.txt frameworks.txt
-        vcs.txt aws.txt contact.txt`);
+            displayOutput(`about.txt education.txt  experience.txt languages.txt contact.txt`);
         }else{
             errorMessage(x);
         }
@@ -143,6 +145,17 @@ document.addEventListener('keydown', function(event) {
          x.innerHTML = x.innerHTML.slice(0,x.innerHTML.length-1);
      }else if(KeyCodes[key]!= undefined){
          x.innerHTML = x.innerHTML + KeyCodes[key];
+     }
+     if(key == 9){
+         event.preventDefault();
+         let command = x.innerHTML.split(" ")[0];
+         let file = x.innerHTML.split(" ")[1];
+         for(let i=0;i<files.length;i++){
+             if(files[i].includes(file)){
+                 x.innerHTML = command +" "+files[i];
+                 break;
+             }
+         }
      }
      
 });
