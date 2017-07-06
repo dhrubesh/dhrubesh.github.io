@@ -1,5 +1,4 @@
 /*global KeyCodes*/
-
 let KeyCodes = {
     81:"q",
     87:"w",
@@ -40,12 +39,19 @@ let KeyCodes = {
 
 let commands = {
     "ls":()=>{
-        displayOutput("bla.txt blah.txt  blaa.txt blaa.txt");
+        displayOutput("about.txt education.txt  experience.txt languages.txt");
+    },
+    "clear":()=>{
+        let terminal = document.getElementById("terminal");
+        let bash = document.getElementById("bash");
+        terminal.innerHTML = "";
+        terminal.appendChild(bash);
+        document.getElementById("input").innerHTML = "";
     }
+    
 }
 
 function displayOutput(output){
-    // debugger;
     let elem = document.createElement("P");
     let text = document.createTextNode(output);
     let terminal = document.getElementById("terminal");
@@ -68,12 +74,9 @@ function errorMessage(x){
 
 document.addEventListener('keydown', function(event) {
      let x = document.getElementById("input");
-     console.log(event)
      key = event.keyCode;
-     console.log(key)
      if(key == 13){
          if (commands[x.innerHTML]!=undefined){
-            //  debugger;
              commands[x.innerHTML]();
          }else{
              errorMessage(x);
