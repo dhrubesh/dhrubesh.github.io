@@ -37,16 +37,27 @@ let KeyCodes = {
     32:" "
 };
 
+let Info = {
+    "about.txt":`I am Dhrubesh, a CS student from India. I love web development and acoustic music.`,
+    "education.txt":"B-tech Computer Science , SRM univ Chennai India",
+    "experience.txt":"blank", //update this later
+    "languages.txt":"JavaScript" //update this later
+}
+
 let commands = {
-    "ls":()=>{
+    "ls":(x)=>{
         displayOutput("about.txt education.txt  experience.txt languages.txt");
     },
-    "clear":()=>{
+    "clear":(x)=>{
         let terminal = document.getElementById("terminal");
         let bash = document.getElementById("bash");
         terminal.innerHTML = "";
         terminal.appendChild(bash);
         document.getElementById("input").innerHTML = "";
+    },
+    "cat":(x)=>{
+        let info = x.replace("cat ","");
+        displayOutput(Info[info]);
     }
     
 }
@@ -76,8 +87,8 @@ document.addEventListener('keydown', function(event) {
      let x = document.getElementById("input");
      key = event.keyCode;
      if(key == 13){
-         if (commands[x.innerHTML]!=undefined){
-             commands[x.innerHTML]();
+         if (commands[x.innerHTML.split(" ")[0]]!=undefined){
+             commands[x.innerHTML.split(" ")[0]](x.innerHTML);
          }else{
              errorMessage(x);
          }
