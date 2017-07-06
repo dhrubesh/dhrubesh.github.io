@@ -1,3 +1,8 @@
+body{
+    color: #fff;
+    background-color:#333
+}
+
 h1{
     font-family: 'Rubik Mono One', sans-serif;
 }
@@ -20,11 +25,7 @@ p{
 }
 
 #name{
-    background-color: #f4df42;
-    color: #333;
+    background-color: #4dff4d;
+    color: #343;
 }
 
-body{
-    color: #fff;
-    background-color:#333
-}
