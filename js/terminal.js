@@ -47,7 +47,7 @@ let files = ["about.txt" ,"education.txt"  ,"experience.txt", "languages.txt","c
 let Info = {
     "about.txt":`I am Dhrubesh, a CS student from India. I love web development and acoustic music.`,
     "education.txt":"B-tech Computer Science , SRM univ Chennai India",
-    "experience.txt":"Front-end Developer: ''EdXengine'' :- July 2017 to Nov 2017   ---||---   UI Developer : ''Pickyourtrail'' :-  May 2017 - July 2017    --||--   Front-End Developer : ''Try Cinema'' :-    Sept 2016 - Feb 2017    ", //update this later
+    "experience.txt":"Content Creator: ''Programming HUB'' :- Dec 2017 to Present  ---||---  Front-end Developer: ''EdXengine'' :- July 2017 to Nov 2017   ---||---   UI Developer : ''Pickyourtrail'' :-  May 2017 - July 2017    --||--   Front-End Developer : ''Try Cinema'' :-    Sept 2016 - Feb 2017    ", //update this later
     "languages.txt":"JavaScript , AngularJS and ReactJS", //update this later
     "contact.txt":"Email: dhrubesh97@gmail.com"
 }
