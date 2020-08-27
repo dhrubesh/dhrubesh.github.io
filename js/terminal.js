@@ -1,5 +1,5 @@
 /*global KeyCodes*/
-let KeyCodes = {
+const KeyCodes = {
   81: 'q',
   87: 'w',
   69: 'e',
@@ -41,28 +41,44 @@ let commandStack = [];
 let commandIndex = 0;
 
 //files
-let files = [
+const files = [
   'about.txt',
   'education.txt',
   'experience.txt',
-  'languages.txt',
+  'technologies.txt',
   'contact.txt',
 ];
 
-let Info = {
-  'about.txt': `I am Dhrubesh, a CS student from India. I love web development and acoustic music.`,
+const Info = {
+  'about.txt': `I am Dhrubesh, a Front-end Devloper from India. I love web development and soft rock.`,
   'education.txt': 'B-tech Computer Science , SRM univ Chennai India',
-  'experience.txt':
-    'Software Developer @Inkmonk from Aug2018-Sept2018 ---||--- Product Developer @Postman(api dev) from June2018-July2018 ---||--- Technical Content Manager @Programming HUB from Jan2018-May2018 ---||--- Content Creator @Programming HUB from Dec2017-Jan2018 ---||--- Front-end Developer @EdXengine from July2017-Nov2017 ---||--- UI Developer @Pickyourtrail from May2017-July2017 --||-- Front-End Developer @Try Cinema from Sept2016-Feb2017', //update this later
-  'languages.txt': 'JavaScript , AngularJS and ReactJS', //update this later
+  'experience.txt': 
+    `Front-end Developer @Razorpay(June2019-present) 
+    ---||---
+    Front-end Intern @Razorpay(Jan2019-April2019) 
+    ---||---
+    Front-end Intern @Inkmonk(Aug2018-Sept2018) 
+    ---||--- 
+    Product Developer Intern @Postman(June2018-July2018)
+    ---||---
+    Technical Content Manager @Programming HUB(Jan2018-May2018)
+    ---||---
+    Content Creator @Programming HUB(Dec2017-Jan2018)
+    ---||--- 
+    Front-end Intern @EdXengine(July2017-Nov2017)
+    ---||---
+    UI Developer Intern @Pickyourtrail(May2017-July2017)
+    ---||---
+    Front-End Intern @Try Cinema(Sept2016-Feb2017)`, 
+  'technologies.txt': 'JavaScript, ReactJS, Redux, Webpack etc..',
   'contact.txt': 'Email: dhrubesh97@gmail.com',
 };
 
-let commands = {
+const commands = {
   ls: x => {
     if (x.replace(' ', '') == 'ls') {
       displayOutput(
-        `about.txt education.txt experience.txt languages.txt contact.txt`
+        `about.txt education.txt experience.txt technologies.txt contact.txt`
       );
     } else {
       errorMessage(x);
@@ -94,16 +110,15 @@ let commands = {
 };
 
 function displayOutput(output) {
-  let elem = document.createElement('P');
-  let text = document.createTextNode(output);
-  let terminal = document.getElementById('terminal');
-  let bash = document.getElementById('bash');
-  let NewTerminal = bash.cloneNode(true);
+  const elem = document.createElement('P');
+  const terminal = document.getElementById('terminal');
+  const bash = document.getElementById('bash');
+  const NewTerminal = bash.cloneNode(true);
   document.getElementById('blinker').innerHTML = '';
   document.getElementById('blinker').setAttribute('id', '');
   document.getElementById('input').setAttribute('id', '');
   bash.setAttribute('id', '');
-  elem.appendChild(text);
+  elem.innerHTML = output
   terminal.appendChild(elem);
   terminal.appendChild(NewTerminal);
   document.getElementById('input').innerHTML = '';
