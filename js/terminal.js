@@ -52,30 +52,34 @@ const files = [
 const Info = {
   'about.txt': `I am Dhrubesh, a Front-end Devloper from India. I love web development and soft rock.`,
   'education.txt': 'B-tech Computer Science , SRM univ Chennai India',
-  'experience.txt': 
-    `Front-end Developer @Razorpay(June2019-present) 
-    ---||---
-    Front-end Intern @Razorpay(Jan2019-April2019) 
-    ---||---
-    Front-end Intern @Inkmonk(Aug2018-Sept2018) 
-    ---||--- 
-    Product Developer Intern @Postman(June2018-July2018)
-    ---||---
-    Technical Content Manager @Programming HUB(Jan2018-May2018)
-    ---||---
-    Content Creator @Programming HUB(Dec2017-Jan2018)
-    ---||--- 
-    Front-end Intern @EdXengine(July2017-Nov2017)
-    ---||---
-    UI Developer Intern @Pickyourtrail(May2017-July2017)
-    ---||---
-    Front-End Intern @Try Cinema(Sept2016-Feb2017)`, 
+  'experience.txt': `
+Senior Front-end Developer @Allganize(May2021-July2023)
+----------------
+Senior Front-end Developer @Makeen(Jan2021-May2021) 
+----------------
+Front-end Developer @Razorpay(June2019-Dec2020) 
+----------------
+Front-end Intern @Razorpay(Jan2019-April2019) 
+----------------
+Front-end Intern @Inkmonk(Aug2018-Sept2018) 
+----------------
+Product Developer Intern @Postman(June2018-July2018)
+----------------
+Technical Content Manager @Programming HUB(Jan2018-May2018)
+----------------
+Content Creator @Programming HUB(Dec2017-Jan2018)
+----------------
+Front-end Intern @EdXengine(July2017-Nov2017)
+----------------
+UI Developer Intern @Pickyourtrail(May2017-July2017)
+----------------
+Front-End Intern @Try Cinema(Sept2016-Feb2017)`,
   'technologies.txt': 'JavaScript, ReactJS, Redux, Webpack etc..',
   'contact.txt': 'Email: dhrubesh97@gmail.com',
 };
 
 const commands = {
-  ls: x => {
+  ls: (x) => {
     if (x.replace(' ', '') == 'ls') {
       displayOutput(
         `about.txt education.txt experience.txt technologies.txt contact.txt`
@@ -84,22 +88,22 @@ const commands = {
       errorMessage(x);
     }
   },
-  clear: x => {
+  clear: (x) => {
     let terminal = document.getElementById('terminal');
     let bash = document.getElementById('bash');
     terminal.innerHTML = '';
     terminal.appendChild(bash);
     document.getElementById('input').innerHTML = '';
   },
-  cat: x => {
+  cat: (x) => {
     let info = x.replace('cat ', '');
     displayOutput(Info[info]);
   },
-  echo: x => {
+  echo: (x) => {
     let data = x.replace('echo ', '');
     displayOutput(data);
   },
-  help: x => {
+  help: (x) => {
     let commandList = Object.keys(commands);
     let data = 'Try these commands to find out more about me: ';
     for (let i = 0; i < commandList.length; i++) {
@@ -118,7 +122,8 @@ function displayOutput(output) {
   document.getElementById('blinker').setAttribute('id', '');
   document.getElementById('input').setAttribute('id', '');
   bash.setAttribute('id', '');
-  elem.innerHTML = output
+  elem.innerHTML = output;
+  elem.style.whiteSpace = 'pre-wrap';
   terminal.appendChild(elem);
   terminal.appendChild(NewTerminal);
   document.getElementById('input').innerHTML = '';
@@ -128,7 +133,7 @@ function errorMessage(x) {
   displayOutput('bash: ' + x.innerHTML + ': command not found');
 }
 
-document.addEventListener('keydown', function(event) {
+document.addEventListener('keydown', function (event) {
   let x = document.getElementById('input');
   key = event.keyCode;
   if (key == 13) {
@@ -176,3 +181,11 @@ document.addEventListener('keydown', function(event) {
     }
   }
 });
+
+const details = navigator.userAgent;
+const regexp = /android|iphone|kindle|ipad/i;
+let isMobileDevice = regexp.test(details);
+if (isMobileDevice) {
+  console.log('You are using a Mobile Device');
+  alert('Please open the website on Desktop to get the full experience');
+}
